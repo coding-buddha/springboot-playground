@@ -1,0 +1,37 @@
+plugins {
+	// 2.3.x 에서 GA 버전 택 : https://spring.io/projects/spring-boot#learn
+	// https://docs.spring.io/spring-boot/docs/2.3.7.RELEASE/reference/html/
+	id 'org.springframework.boot' version '2.3.7.RELEASE'
+
+	// maven 과 같이 의존성 관리 및 제외를 제공하는 gradle 플러그인
+	// 해당 값이 없으면 dependency 에 starter 의존성 버전의 태그가 설정되지 않는다.
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'edu.pasudo123.study'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+}
+
+test {
+	useJUnitPlatform()
+}

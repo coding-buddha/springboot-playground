@@ -1,0 +1,16 @@
+spring:
+  main:
+    # 컨텍스트 로드시 생성이 아닌 필요시 빈 생성.
+    lazy-initialization: false
+
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+
+# RandomValuePropertySource : 테스트 케이스 때 유용
+my.number: ${random.int}
+my.number.less.then.ten: ${random.int(10)}
+my.number.in.range: ${random.int[100,1000]}
+my.uuid: ${random.uuid}
+
+server:
+  shutdown: graceful
